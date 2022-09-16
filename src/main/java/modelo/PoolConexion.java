@@ -10,11 +10,7 @@ public class PoolConexion {
     private static PoolConexion dataSource;
     private final BasicDataSource bds;
 
-    // Conexion remota Recargas Virtuales
-    //private final String DB_NAME = "ruteo_pru";
-    //private final String DB_USER = "gcabrera";
-    //private final String DB_PASS = "Gca$2323";
-    //private final String URL = Variables.IP_DB + DB_NAME;
+   
    
     // Conexion remota Recargas Virtuales
     private final String DB_NAME = Variables.DB_NAME;
