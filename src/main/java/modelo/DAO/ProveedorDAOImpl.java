@@ -17,7 +17,7 @@ public class ProveedorDAOImpl {
 
         String sql = "SELECT * FROM proveedores WHERE id_prov=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, proveedorVo.getIdProv());
@@ -50,7 +50,7 @@ public class ProveedorDAOImpl {
         String sql = "INSERT INTO proveedores (id_prov, tipo_id, nom_prov, nom_comercial, email_prov, telefono_prov)"
                 + "  VALUES(?,?,?,?,?,?)";
 
-       try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+       try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
                     
             ps.setString(1, proveedor.getIdProv());
@@ -73,7 +73,7 @@ public class ProveedorDAOImpl {
         String sql = "UPDATE proveedores SET nom_prov=?, nom_comercial=?, email_prov=?, telefono_prov=?"
                 + " WHERE id_prov=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
                
            

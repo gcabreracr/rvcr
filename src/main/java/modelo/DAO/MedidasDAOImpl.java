@@ -19,7 +19,7 @@ public class MedidasDAOImpl implements MedidasDAO {
 
         String sql = "SELECT codMedida, desMedida FROM medidasFE";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {

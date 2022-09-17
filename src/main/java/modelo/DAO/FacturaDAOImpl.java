@@ -24,7 +24,7 @@ public class FacturaDAOImpl {
                 + " FROM facturas WHERE cod_agencia=? AND cod_pdv=? AND fec_factura=?"
                 + " ORDER BY num_factura";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, agencia);

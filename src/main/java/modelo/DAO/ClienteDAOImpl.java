@@ -16,7 +16,7 @@ public class ClienteDAOImpl {
 
         String sql = "SELECT * FROM clientes WHERE cod_cliente=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, clienteVO.getCod_cliente());
@@ -80,7 +80,7 @@ public class ClienteDAOImpl {
                 + " FROM clientes WHERE cod_agencia=? AND cod_ruta=?"
                 + " ORDER BY nom_cliente";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, agencia);
@@ -114,7 +114,7 @@ public class ClienteDAOImpl {
                 + " FROM clientes WHERE cod_agencia=? AND cod_ruta=? AND status_cli=1"
                 + " ORDER BY nom_cliente";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, agencia);
@@ -150,7 +150,7 @@ public class ClienteDAOImpl {
                 + "fecapertura, sharekolbi, sharemovistar, codigo_itec)"
                 + "  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             ps.setString(1, cliente.getNom_cliente());
@@ -206,7 +206,7 @@ public class ClienteDAOImpl {
                 + "cod_ruta=?,status_cli=?,sharekolbi=?,sharemovistar=?,codigo_itec=?,feccamsta=? "
                 + "WHERE cod_cliente=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, cliente.getNom_cliente());

@@ -21,7 +21,7 @@ public class VentaDiaDAOImpl {
                 + " INNER JOIN articulos AS a ON vd.codigo_art=a.codigo_art"
                 + " WHERE cod_agencia=? AND cod_pdv=? AND fecha_liq=? ORDER BY vd.codigo_art";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, age);
@@ -48,7 +48,7 @@ public class VentaDiaDAOImpl {
 
         String sql = "SELECT carga_ini,recargas FROM ventadiaria WHERE codigo_art=? AND cod_agencia=? AND cod_pdv=? AND fecha_liq=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, ventaDia.getCodigo_art());
@@ -79,7 +79,7 @@ public class VentaDiaDAOImpl {
         String sql = "INSERT INTO ventadiaria (codigo_art,cod_agencia,cod_pdv,fecha_liq,carga_ini,recargas) "
                 + "VALUES(?,?,?,?,?,?)";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, ventaDia.getCodigo_art());
@@ -101,7 +101,7 @@ public class VentaDiaDAOImpl {
         String sql = "UPDATE ventadiaria SET carga_ini=?,recargas=?"
                 + " WHERE codigo_art=? AND cod_agencia=? AND cod_pdv=? AND fecha_liq=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, ventaDia.getCarga_ini());

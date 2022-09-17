@@ -22,7 +22,7 @@ public class DistGeoDAOImpl implements DistGeoDAO {
         ArrayList<DireccionVO> direcciones = new ArrayList<>();
         DireccionVO direccion;
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -50,7 +50,7 @@ public class DistGeoDAOImpl implements DistGeoDAO {
         Vector<ProvinciaVO> provincias = new Vector<>();
         ProvinciaVO provincia;
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -82,7 +82,7 @@ public class DistGeoDAOImpl implements DistGeoDAO {
         Vector<CantonVO> cantones = new Vector<>();
         CantonVO canton;
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -114,7 +114,7 @@ public class DistGeoDAOImpl implements DistGeoDAO {
         Vector<DistritoVO> distritos = new Vector<>();
         DistritoVO distrito;
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery()) {

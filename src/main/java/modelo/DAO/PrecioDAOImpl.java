@@ -17,7 +17,7 @@ public class PrecioDAOImpl {
 
         String sql = "SELECT * FROM precios WHERE codigo_art=? AND cat_pdv=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, precioVO.getCodigo_art());
@@ -51,7 +51,7 @@ public class PrecioDAOImpl {
         String sql = "UPDATE precios SET precio_art=?,descto_art=?, codTarifa=?, desTarifa=?, impto_art=?,exento_art=?,redondeo=?"
                 + " WHERE codigo_art=? AND cat_pdv=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setDouble(1, precio.getPrecio_art());
@@ -75,7 +75,7 @@ public class PrecioDAOImpl {
         String sql = "INSERT INTO precios (codigo_art,cat_pdv,precio_art,descto_art,codTarifa,desTarifa,impto_art,exento_art,redondeo)"
                 + " VALUES(?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, precio.getCodigo_art());
@@ -103,7 +103,7 @@ public class PrecioDAOImpl {
                 + " WHERE p.cat_pdv=" + catPdv
                 + " ORDER BY nom_lar_art";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery()) {

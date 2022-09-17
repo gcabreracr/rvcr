@@ -53,7 +53,7 @@ public class Main {
         }
         
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection()) {
+        try (Connection conn = PoolConexion.getInstance().getConnection()) {
 
             VentanaPrincipal principal = new VentanaPrincipal();
 

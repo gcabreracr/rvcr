@@ -20,7 +20,7 @@ public class CatArticuloDAOImpl implements CatArticuloDAO {
 
         String sql = "SELECT codCategoria, desCategoria FROM catart";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {

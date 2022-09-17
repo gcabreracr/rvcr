@@ -14,7 +14,7 @@ public class DocRecibidoDAOImpl {
 
         String sql = "SELECT clave_fe FROM doc_rec WHERE clave_fe=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, clave);

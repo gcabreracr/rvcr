@@ -15,7 +15,7 @@ public class CatPdvDAOImpl {
 
         String sql = "SELECT nom_cat_pdv FROM catpdv WHERE cat_pdv=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); 
+        try (Connection conn = PoolConexion.getInstance().getConnection(); 
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, catpdv.getCat_pdv());

@@ -18,7 +18,7 @@ public class AgenciaDAOImpl {
 
         String sql = "SELECT * FROM agencias WHERE cod_agencia=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, age.getCodagencia());

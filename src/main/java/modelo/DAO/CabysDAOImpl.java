@@ -28,7 +28,7 @@ public class CabysDAOImpl implements CabysDAO {
         CabysVO cabys = new CabysVO();
         String sql = "SELECT Codigo, Descripcion FROM cabys WHERE Codigo=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, codigo);
@@ -53,7 +53,7 @@ public class CabysDAOImpl implements CabysDAO {
         int numReg=0;
         String sql = "SELECT Codigo, Descripcion FROM cabys WHERE Descripcion LIKE '%" + busqueda.trim() + "%' ORDER BY Codigo";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {
@@ -92,7 +92,7 @@ public class CabysDAOImpl implements CabysDAO {
         CabysVO codigoCabys;
         String sql = "SELECT Codigo, Descripcion FROM cabys WHERE Descripcion LIKE '%" + busqueda + "%' ORDER BY Codigo";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {

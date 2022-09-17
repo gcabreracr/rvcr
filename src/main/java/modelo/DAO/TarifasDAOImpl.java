@@ -29,7 +29,7 @@ public class TarifasDAOImpl implements TarifasDAO {
 
         String sql = "SELECT codTarifa, desTarifa, porTarifa FROM tarifasFE";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {

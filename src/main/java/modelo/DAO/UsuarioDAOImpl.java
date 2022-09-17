@@ -38,7 +38,7 @@ public class UsuarioDAOImpl{
                 + "INNER JOIN rutas AS r ON u.cod_agencia=r.cod_agencia AND u.cod_pdv=r.cod_pdv "
                 + "WHERE u.codigo_usu=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, usr.getCodigoUsu());
@@ -80,7 +80,7 @@ public class UsuarioDAOImpl{
                 + "INNER JOIN rutas AS r ON u.cod_agencia=r.cod_agencia AND u.cod_pdv=r.cod_pdv "
                 + "WHERE u.codigo_usu=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, usr.getCodigoUsu());
@@ -120,7 +120,7 @@ public class UsuarioDAOImpl{
         String sql = "UPDATE usuarios SET nombre_usu=?, tipo_usu=?, cod_agencia=?, cod_pdv=?, cod_bodega=?, status_usu=?"
                 + " WHERE codigo_usu=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
             
             
@@ -145,7 +145,7 @@ public class UsuarioDAOImpl{
         String sql = "INSERT INTO usuarios (codigo_usu, nombre_usu, tipo_usu, cod_agencia, cod_pdv, cod_bodega, status_usu, pass_usu)"
                 + "  VALUES(?,?,?,?,?,?,?,?)";
 
-       try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+       try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
                     
             ps.setString(1, usr.getCodigoUsu());
@@ -168,7 +168,7 @@ public class UsuarioDAOImpl{
         String sql = "UPDATE usuarios SET pass_usu=?"
                 + " WHERE codigo_usu=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); 
+        try (Connection conn = PoolConexion.getInstance().getConnection(); 
                 PreparedStatement ps = conn.prepareStatement(sql);) {
             
             

@@ -28,7 +28,7 @@ public class UsuarioPriDAOImpl {
                 + "mnEmiFac,mnAnuFac,mnAceRecFac,mnReeFacRec,mnFE_NC,mnFE_ND,mnFacCom,mnRepFac,mnLiqCarDia,mnLiqConEst,mnUsuarios)"
                 + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, usrPri.getCodUsuario());
@@ -64,7 +64,7 @@ public class UsuarioPriDAOImpl {
                 + "mnAgencias=?,mnPdv=?,mnEmiFac=?,mnAnuFac=?,mnAceRecFac=?,mnReeFacRec=?,mnFE_NC=?,mnFE_ND=?,"
                 + "mnFacCom=?,mnRepFac=?,mnLiqCarDia=?,mnLiqConEst=?,mnUsuarios=? WHERE cod_usuario=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setBoolean(1, usrPri.isMnActDat());
@@ -96,7 +96,7 @@ public class UsuarioPriDAOImpl {
 
         String sql = "SELECT * FROM usuarios_pri WHERE cod_usuario=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, usrPri.getCodUsuario());

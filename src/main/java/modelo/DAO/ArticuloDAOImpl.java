@@ -16,7 +16,7 @@ public class ArticuloDAOImpl {
 
         String sql = "SELECT nom_lar_art,nom_cor_art,codMedida, uni_med, codCategoria, cod_barra, tipo_item, codigoCabys, status_art FROM articulos WHERE codigo_art=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); 
+        try (Connection conn = PoolConexion.getInstance().getConnection(); 
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setInt(1, articulo.getCodigo_art());
@@ -52,7 +52,7 @@ public class ArticuloDAOImpl {
 
         String sql = "SELECT codigo_art,nom_lar_art FROM articulos ORDER BY nom_lar_art";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             try (ResultSet rs = ps.executeQuery();) {
@@ -75,7 +75,7 @@ public class ArticuloDAOImpl {
         String sql = "UPDATE articulos SET nom_lar_art=?, nom_cor_art=?, codMedida=?, uni_med=?, codCategoria=?,cod_barra=?,tipo_item=?, codigoCabys=?, status_art=?"
                 + " WHERE codigo_art=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, articulo.getNom_lar_art());
@@ -99,7 +99,7 @@ public class ArticuloDAOImpl {
         String sql = "INSERT INTO articulos (nom_lar_art, nom_cor_art, codMedida, uni_med, codCategoria, cod_barra, tipo_item, codigoCabys, status_art)"
                 + " VALUES(?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection();
+        try (Connection conn = PoolConexion.getInstance().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             ps.setString(1, articulo.getNom_lar_art());
@@ -127,7 +127,7 @@ public class ArticuloDAOImpl {
 
         String sql = "SELECT codigo_art, nom_lar_art, nom_cor_art, codMedida, uni_med, codCategoria, tipo_item, codigoCabys, status_art FROM articulos WHERE cod_barra=?";
 
-        try (Connection conn = PoolConexion.getDataSource().getConnection(); // This should return a NEW connection!
+        try (Connection conn = PoolConexion.getInstance().getConnection(); // This should return a NEW connection!
                 PreparedStatement ps = conn.prepareStatement(sql);) {
 
             ps.setString(1, articulo.getCod_barra());
